@@ -1,17 +1,20 @@
 package com.reader.services;
 
 import com.reader.models.Item;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ItemService {
 
     private List<Item> items;
     private SourceService sourceService;
-    public ItemService() {
-        this.sourceService = new SourceService();
+
+    public ItemService(SourceService sourceService) {
+        this.sourceService = sourceService;
         updateItems();
     }
 
@@ -32,6 +35,13 @@ public class ItemService {
             items = new ArrayList<>();
         }
         items = sourceService.getItems();
+        items.forEach(item -> {
+            if (item.getNameSource().equals("habr")) {
+                var body = item.getBody().replaceAll("<a","<span")
+                        .replaceAll("<img","<span");
+                item.setBody(body);
+            }
+        });
     }
 
 }

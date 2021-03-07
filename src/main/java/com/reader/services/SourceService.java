@@ -2,23 +2,26 @@ package com.reader.services;
 
 import com.reader.models.Item;
 import com.reader.models.UriItem;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class SourceService {
 
     private List<String> urlList;
     private List<UriItem> uriItems;
+
     private RssService rssService;
     private ParserService parserService;
 
-    public SourceService() {
+    public SourceService(RssService rssService,ParserService parserService) {
         _updateUrlList();
         this.uriItems = new ArrayList<>();
-        this.rssService = new RssService();
-        this.parserService = new ParserService();
+        this.rssService = rssService;
+        this.parserService = parserService;
     }
 
     //TODO get url and subUrl in base
@@ -37,11 +40,13 @@ public class SourceService {
         return result;
     }
 
-    //TODO handler html (broken image adn link)
     public Item getItem(Item item) {
         var uri = uriItems.stream().filter(uriItem -> uriItem.getId() == item.getId()).findFirst().orElse(null);
-        item.setBody(parserService.getContent(uri.getUrl(),item.getNameSource()));
-        return item;
+        return new Item(
+                item.getHeader(),
+                parserService.getContent(uri.getUrl(),item.getNameSource()),
+                item.getNameSource(),
+                item.getPublishDate());
     }
 
 }

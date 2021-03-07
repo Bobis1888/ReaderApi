@@ -1,14 +1,11 @@
 package com.reader.controllers;
 
 import com.reader.models.APIResponse;
-import com.reader.models.Item;
 import com.reader.models.User;
 import com.reader.repositories.UserRepository;
 import com.reader.services.ItemService;
 import com.reader.services.UserService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -20,10 +17,10 @@ public class MainController {
     private final UserService userService;
     private final ItemService itemService;
 
-    public MainController(UserRepository userRepository) {
+    public MainController(UserRepository userRepository, UserService userService,ItemService itemService) {
         this.userRepository = userRepository;
-        this.userService = new UserService();
-        this.itemService = new ItemService();
+        this.userService = userService;
+        this.itemService = itemService;
     }
 
     @PostMapping(rootUrl + "user/login")
