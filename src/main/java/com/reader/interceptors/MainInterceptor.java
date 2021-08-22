@@ -16,15 +16,15 @@ public class MainInterceptor implements HandlerInterceptor {
     @Autowired
     ApplicationContext context;
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("Pre handle");
-        var email = request.getHeader("Email");
-
-        if (email != null) {
-            ((AnnotationConfigServletWebServerApplicationContext) context).registerBean(User.class,email);
-        }
-
-        return true;
-    }
+//    @Override
+//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+//        System.out.println("Pre handle");
+//        var email = request.getHeader("Email");
+//
+//        if (email != null) {
+//            ((AnnotationConfigServletWebServerApplicationContext) context).registerBean(User.class,email);
+//        }
+//
+//        return true;
+//    }
 }

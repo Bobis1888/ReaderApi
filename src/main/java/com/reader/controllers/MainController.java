@@ -64,8 +64,27 @@ class ResponseDto {
         this.items = items;
     }
 
+    public ResponseDto(Item ... items) {
+        this.items = List.of(items);
+    }
+
     public ResponseDto(User user) {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }
