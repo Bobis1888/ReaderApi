@@ -2,8 +2,11 @@ package com.reader.services;
 
 import com.reader.models.Item;
 import com.reader.models.UriItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,21 +15,23 @@ import java.util.List;
 public class SourceService {
 
     private List<String> urlList;
-    private List<UriItem> uriItems;
+    private List<UriItem> uriItems = new ArrayList<>();
 
+    @Autowired
     private RssService rssService;
+    @Autowired
     private ParserService parserService;
 
-    public SourceService(RssService rssService,ParserService parserService) {
+    public SourceService() {}
+
+    @PostConstruct
+    private void init() {
         _updateUrlList();
-        this.uriItems = new ArrayList<>();
-        this.rssService = rssService;
-        this.parserService = parserService;
     }
 
     //TODO get url and subUrl in base
     private void _updateUrlList() {
-        urlList = Arrays.asList("https://habr.com/ru/rss/flows/develop/all/?fl=ru");
+        urlList = List.of("https://habr.com/ru/rss/flows/develop/all/?fl=ru");
     }
 
     public List<Item> getItems() {

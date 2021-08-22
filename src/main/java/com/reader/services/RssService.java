@@ -16,6 +16,8 @@ import java.util.List;
 @Component
 public class RssService {
 
+    public RssService() {}
+
     public List[] getItems(String url) {
         List[] result = new ArrayList[2];
         var listItem = new ArrayList<Item>();

@@ -10,6 +10,8 @@ import java.io.IOException;
 @Component
 public class ParserService {
 
+    public ParserService() {}
+
     public String getContent(String uri,String nameSource) {
         Document doc;
         try {
@@ -27,7 +29,7 @@ public class ParserService {
     //TODO
     private String _determiningSelectors(String nameSource) {
         if (nameSource.equals("habr")) {
-            return ".post__body";
+            return ".article-formatted-body";
         }
         return "";
     }
