@@ -1,5 +1,6 @@
-package com.reader.interceptors;
+package com.reader.configuration;
 
+import com.reader.interceptors.MainInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,6 +14,6 @@ public class ConfigInterceptors implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(mainInterceptor);
+        registry.addInterceptor(mainInterceptor).addPathPatterns("/**");
     }
 }
