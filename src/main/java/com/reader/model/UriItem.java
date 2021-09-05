@@ -1,4 +1,4 @@
-package com.reader.models;
+package com.reader.model;
 
 public class UriItem {
     private int id;

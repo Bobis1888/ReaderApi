@@ -1,15 +1,12 @@
-package com.reader.controllers;
+package com.reader.controller;
 
-import com.reader.models.Item;
-import com.reader.models.User;
-import com.reader.repositories.UserRepository;
-import com.reader.services.ItemService;
-import com.reader.services.UserService;
+import com.reader.model.User;
+import com.reader.model.dto.ResponseDto;
+import com.reader.repos.UserRepository;
+import com.reader.service.ItemService;
+import com.reader.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -49,41 +46,3 @@ public class MainController {
 
 }
 
-class ResponseDto {
-
-    User user;
-    List<Item> items;
-
-    public ResponseDto(Item item) {
-        this.items = new ArrayList<>();
-        items.add(item);
-    }
-
-    public ResponseDto(List<Item> items) {
-        this.items = items;
-    }
-
-    public ResponseDto(Item ... items) {
-        this.items = List.of(items);
-    }
-
-    public ResponseDto(User user) {
-        this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-}

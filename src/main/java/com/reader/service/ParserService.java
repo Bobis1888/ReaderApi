@@ -1,4 +1,4 @@
-package com.reader.services;
+package com.reader.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,7 +1,8 @@
 package com.reader;
 
-import com.reader.models.User;
-import com.reader.repositories.UserRepository;
+import com.reader.model.Role;
+import com.reader.model.User;
+import com.reader.repos.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,11 @@ public class ReaderApplication {
 	//MOCK
 	@Bean
 	CommandLineRunner init(UserRepository userRepository) {
-		return args -> userRepository.save(new User("test@test","test",true));
+		var user = new User();
+		user.setPassword("test");
+		user.setEmail("test@test");
+		user.setRole(Role.USER);
+		return args -> userRepository.save(user);
 	}
 
 }

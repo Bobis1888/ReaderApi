@@ -1,14 +1,12 @@
-package com.reader.services;
+package com.reader.service;
 
-import com.reader.models.Item;
-import com.reader.models.UriItem;
+import com.reader.model.Item;
+import com.reader.model.UriItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component

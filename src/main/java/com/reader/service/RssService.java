@@ -1,7 +1,7 @@
-package com.reader.services;
+package com.reader.service;
 
-import com.reader.models.Item;
-import com.reader.models.UriItem;
+import com.reader.model.Item;
+import com.reader.model.UriItem;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;

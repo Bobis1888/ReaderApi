@@ -1,6 +1,6 @@
-package com.reader.services;
+package com.reader.service;
 
-import com.reader.models.Item;
+import com.reader.model.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

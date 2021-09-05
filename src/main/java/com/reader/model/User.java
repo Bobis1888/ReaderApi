@@ -1,10 +1,6 @@
-package com.reader.models;
+package com.reader.model;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -13,25 +9,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String email;
-    private boolean trusted = false;
     private String password;
+    private Role role;
 
     public User() {}
-
-    public User(String email) {
-        this.email = email;
-    }
-
-    public User(String email,String password) {
-        this(email);
-        this.password = password;
-    }
-
-    public User(String email,String password,boolean trusted) {
-        this(email);
-        this.password = password;
-        this.trusted = trusted;
-    }
 
     public long getId() {
         return id;
@@ -45,12 +26,8 @@ public class User {
         return email;
     }
 
-    public boolean isTrusted() {
-        return trusted;
-    }
-
-    public void setTrusted(boolean trusted) {
-        this.trusted = trusted;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -61,12 +38,21 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", trusted=" + trusted +
+                ", password='" + "******" + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 

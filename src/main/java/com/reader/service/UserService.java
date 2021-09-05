@@ -1,6 +1,6 @@
-package com.reader.services;
+package com.reader.service;
 
-import com.reader.models.User;
+import com.reader.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,11 +16,7 @@ public class UserService {
     public UserService(){}
 //MOCK
     public User login(User user) {
-        if (user.equals(new User("test@test","test")) && user.isTrusted()) {
-            user.setPassword("******");
-            return user;
-        }
-        return new User(null,null,false);
+        return new User();
     }
 
     public User registration(User user) {

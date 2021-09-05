@@ -1,6 +1,6 @@
-package com.reader.repositories;
+package com.reader.repos;
 
-import com.reader.models.User;
+import com.reader.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User,Long> {
